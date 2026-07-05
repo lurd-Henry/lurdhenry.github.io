@@ -510,3 +510,204 @@ navLinks.forEach(link => {
     });
 
 });
+/* ==========================================
+    HERO PARALLAX
+========================================== */
+
+const hero = document.querySelector(".hero");
+
+const heroImage = document.querySelector(".hero-image");
+
+hero.addEventListener("mousemove", (e)=>{
+
+    const x = (window.innerWidth / 2 - e.clientX) / 35;
+
+    const y = (window.innerHeight / 2 - e.clientY) / 35;
+
+    gsap.to(heroImage,{
+
+        x:-x,
+
+        y:-y,
+
+        duration:1,
+
+        ease:"power3.out"
+
+    });
+
+});
+
+hero.addEventListener("mouseleave",()=>{
+
+    gsap.to(heroImage,{
+
+        x:0,
+
+        y:0,
+
+        duration:1
+
+    });
+
+});
+
+
+
+/* ==========================================
+    MAGNETIC BUTTONS
+========================================== */
+
+const buttons = document.querySelectorAll(".btn");
+
+buttons.forEach(button=>{
+
+    button.addEventListener("mousemove",(e)=>{
+
+        const rect = button.getBoundingClientRect();
+
+        const x = e.clientX - rect.left - rect.width / 2;
+
+        const y = e.clientY - rect.top - rect.height / 2;
+
+        gsap.to(button,{
+
+            x:x * .18,
+
+            y:y * .18,
+
+            duration:.35,
+
+            ease:"power2.out"
+
+        });
+
+    });
+
+    button.addEventListener("mouseleave",()=>{
+
+        gsap.to(button,{
+
+            x:0,
+
+            y:0,
+
+            duration:.4,
+
+            ease:"elastic.out(1,.45)"
+
+        });
+
+    });
+
+});
+
+
+
+/* ==========================================
+    SCROLL INDICATOR
+========================================== */
+
+const indicator = document.querySelector(".scroll-indicator");
+
+window.addEventListener("scroll",()=>{
+
+    if(window.scrollY > 80){
+
+        gsap.to(indicator,{
+
+            opacity:0,
+
+            duration:.4
+
+        });
+
+    }
+
+    else{
+
+        gsap.to(indicator,{
+
+            opacity:1,
+
+            duration:.4
+
+        });
+
+    }
+
+});
+
+
+
+/* ==========================================
+    FLOATING BACKGROUND
+========================================== */
+
+gsap.to(".gradient-1",{
+
+    x:80,
+
+    y:60,
+
+    duration:12,
+
+    repeat:-1,
+
+    yoyo:true,
+
+    ease:"sine.inOut"
+
+});
+
+gsap.to(".gradient-2",{
+
+    x:-60,
+
+    y:-80,
+
+    duration:10,
+
+    repeat:-1,
+
+    yoyo:true,
+
+    ease:"sine.inOut"
+
+});
+
+
+
+/* ==========================================
+    HERO IMAGE GLOW
+========================================== */
+
+gsap.to(".hero-image img",{
+
+    boxShadow:"0 0 60px rgba(124,92,255,.35)",
+
+    repeat:-1,
+
+    yoyo:true,
+
+    duration:2
+
+});
+
+
+
+/* ==========================================
+    HERO TEXT
+========================================== */
+
+gsap.to(".gradient-text",{
+
+    backgroundPosition:"200% center",
+
+    duration:5,
+
+    repeat:-1,
+
+    ease:"none"
+
+});
